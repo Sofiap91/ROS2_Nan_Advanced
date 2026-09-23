@@ -20,6 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'battery_pub = nav2_new_features.battery_pub:main',
         ],
     },
 )
