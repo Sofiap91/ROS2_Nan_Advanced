@@ -27,6 +27,7 @@ include_directories(
 )
 
 set(straight_plugin_name straight_line_planner_core)
+set(wavy_plugin_name wavy_line_planner_core)
 
 set(dependencies
   rclcpp
@@ -62,6 +63,25 @@ install(TARGETS ${straight_plugin_name}
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION lib/${PROJECT_NAME}
 )
+
+# WavyLine plugin related stuff 
+add_library(${wavy_plugin_name} SHARED
+  src/wavy_line_planner.cpp
+)
+
+ament_target_dependencies(${wavy_plugin_name}
+  ${dependencies}
+)
+
+target_compile_definitions(${wavy_plugin_name} PUBLIC "PLUGINLIB__DISABLE_BOOST_FUNCTIONS")
+pluginlib_export_plugin_description_file(nav2_core wavy_line_plugin_info.xml)
+
+install(TARGETS ${wavy_plugin_name}
+  ARCHIVE DESTINATION lib
+  LIBRARY DESTINATION lib
+  RUNTIME DESTINATION lib/${PROJECT_NAME}
+)
+
 
 install(DIRECTORY include/
   DESTINATION include/

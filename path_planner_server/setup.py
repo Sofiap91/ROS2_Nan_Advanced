@@ -19,6 +19,7 @@ setup(
         (os.path.join('share', package_name, 'config'), glob('config/*.xml')),
         (os.path.join('share', package_name, 'config/custom_costmap'), glob('config/custom_costmap/*.yaml')),
         (os.path.join('share', package_name, 'config/straightline_planner'), glob('config/straightline_planner/*.yaml')),
+        (os.path.join('share', package_name, 'config/wavyline_planner'), glob('config/wavyline_planner/*.yaml')),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
